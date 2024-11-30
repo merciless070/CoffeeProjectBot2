@@ -25,6 +25,19 @@ bot.callbackQuery("/about", async (ctx) => {
     await ctx.reply("Я бот? Я бот... Я Бот!");
 });
 
+bot.command(
+    "profile",
+    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_profile }),
+);
+
+const keyboard_profile = new InlineKeyboard()
+    .text("Список интересов", "/hobby");
+
+bot.callbackQuery("/hobby", async (ctx) => {
+    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
+    await ctx.reply("Запомнил ваши хобби!");
+});
+
 // Теперь, когда вы указали, как обрабатывать сообщения, вы можете запустить своего бота.
 // Он подключится к серверам Telegram и будет ждать сообщений.
 // Запуск бота производится из файла main.ts
