@@ -13,18 +13,6 @@ bot.command(
     (ctx) => ctx.reply("Добро пожаловать. Запущен и работает!",{ reply_markup: keyboard }),
 );
 
-// Обработайте другие сообщения.
-bot.on("message", (ctx) => ctx.reply("Получил ваше сообщение: " + ctx.message.text + " !",));
-
-// Клавиатура будет отправлять в бота команду /about
-const keyboard = new InlineKeyboard()
-    .text("Обо мне", "/about");
-
-bot.callbackQuery("/about", async (ctx) => {
-    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
-    await ctx.reply("Я бот? Я бот... Я Бот!");
-});
-
 bot.command(
     "profile",
     (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_profile }),
@@ -37,6 +25,20 @@ bot.callbackQuery("/hobby", async (ctx) => {
     await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
     await ctx.reply("Запомнил ваши хобби!");
 });
+
+// Обработайте другие сообщения.
+bot.on("message", (ctx) => ctx.reply("Получил ваше сообщение: " + ctx.message.text + " !",));
+
+// Клавиатура будет отправлять в бота команду /about
+const keyboard = new InlineKeyboard()
+    .text("Обо мне", "/about");
+
+bot.callbackQuery("/about", async (ctx) => {
+    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
+    await ctx.reply("Я бот? Я бот... Я Бот!");
+});
+
+
 
 // Теперь, когда вы указали, как обрабатывать сообщения, вы можете запустить своего бота.
 // Он подключится к серверам Telegram и будет ждать сообщений.
