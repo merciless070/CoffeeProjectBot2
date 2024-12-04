@@ -33,8 +33,7 @@ bot.command(
 
 const keyboard_hobby = new InlineKeyboard()
     .text("Добавить моё хобби", "/hobby");
-const keyboard_place = new InlineKeyboard()
-    .text("Добавить удобный район", "/place");
+
 
 bot.callbackQuery("/hobby", async (ctx) => {
     await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
