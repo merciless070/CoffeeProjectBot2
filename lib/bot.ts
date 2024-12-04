@@ -26,7 +26,7 @@ bot.callbackQuery("/about", async (ctx) => {
 
 bot.command(
     "help",
-    (ctx) => ctx.reply("/hobby - добавить хобби, /place - добавить удобный район, /fcaffee - добавить любимую кафешку"),
+    (ctx) => ctx.reply("/hobby - добавить хобби, /place - добавить удобный район, /fcafe - добавить любимую кафешку"),
 );
 
 // добаление топиков
@@ -59,7 +59,20 @@ bot.callbackQuery("/place", async (ctx) => {
     await ctx.reply("Запомнил удобный для вас район!");
 });
 
+// добавление любимого кафе
 
+bot.command(
+    "fcafe",
+    (ctx) => ctx.reply("Заполните информацию о вашем любимом кафе!",{ reply_markup: keyboard_fcafe }),
+);
+
+const keyboard_fcafe = new InlineKeyboard()
+    .text("Добавить моё любимое кафе", "/fcafe");
+
+bot.callbackQuery("/fcafe", async (ctx) => {
+    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
+    await ctx.reply("Запомнил ваше любимое кафе!");
+});
 
 // Обработайте другие сообщения.
 bot.on("message", (ctx) => ctx.reply("Получил ваше сообщение: " + ctx.message.text + " !",));
