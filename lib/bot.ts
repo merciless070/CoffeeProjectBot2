@@ -26,13 +26,15 @@ bot.callbackQuery("/about", async (ctx) => {
 
 bot.command(
     "profile",
-    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }),
+    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }, { reply_markup: keyboard_place }),
 );
 
 // добавление топиков
 
 const keyboard_hobby = new InlineKeyboard()
     .text("Добавить моё хобби", "/hobby");
+const keyboard_place = new InlineKeyboard()
+    .text("Добавить удобный район", "/place");
 
 
 bot.callbackQuery("/hobby", async (ctx) => {
