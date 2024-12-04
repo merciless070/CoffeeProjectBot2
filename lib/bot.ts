@@ -13,6 +13,9 @@ bot.command(
     (ctx) => ctx.reply("Добро пожаловать. Запущен и работает!",{ reply_markup: keyboard }),
 );
 
+// Обработайте другие сообщения.
+bot.on("message", (ctx) => ctx.reply("Получил ваше сообщение: " + ctx.message.text + " !",));
+
 // Клавиатура будет отправлять в бота команду /about
 const keyboard = new InlineKeyboard()
     .text("Обо мне", "/about");
@@ -21,34 +24,3 @@ bot.callbackQuery("/about", async (ctx) => {
     await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
     await ctx.reply("Я бот? Я бот... Я Бот!");
 });
-
-// найстрока профиля
-
-bot.command(
-    "profile",
-    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }, { reply_markup: keyboard_place }),
-);
-
-// добавление топиков
-
-const keyboard_hobby = new InlineKeyboard()
-    .text("Добавить моё хобби", "/hobby");
-
-bot.callbackQuery("/hobby", async (ctx) => {
-    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
-    await ctx.reply("Запомнил ваше хобби!");
-});
-
-// добавление района
-
-const keyboard_place = new InlineKeyboard()
-    .text("Добавить удобный район", "/place");
-
-bot.callbackQuery("/place", async (ctx) => {
-    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
-    await ctx.reply("Запомнил ваш район!");
-});
-
-
-// Обработайте другие сообщения.
-bot.on("message", (ctx) => ctx.reply("Получил ваше сообщение: " + ctx.message.text + " !",));
