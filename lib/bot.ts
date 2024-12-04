@@ -22,20 +22,19 @@ bot.callbackQuery("/about", async (ctx) => {
     await ctx.reply("Я бот? Я бот... Я Бот!");
 });
 
-// найстрока профиля
+// список комманд
 
 bot.command(
-    "profile",
-    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }),
+    "help",
+    (ctx) => ctx.reply("/hobby - добавить хобби, /place - добавить удобный район, /fcaffee - добавить любимую кафешку"),
 );
+
+// добаление топиков
 
 bot.command(
-    "profile",
-    (ctx) => ctx.reply("Заполните информацию о вас2!",{ reply_markup: keyboard_hobby }),
+    "hobby",
+    (ctx) => ctx.reply("Заполните информацию о ваших хобби!",{ reply_markup: keyboard_hobby }),
 );
-
-
-// добавление топиков
 
 const keyboard_hobby = new InlineKeyboard()
     .text("Добавить моё хобби", "/hobby");
@@ -45,6 +44,20 @@ bot.callbackQuery("/hobby", async (ctx) => {
     await ctx.reply("Запомнил ваше хобби!");
 });
 
+// добавление района
+
+bot.command(
+    "place",
+    (ctx) => ctx.reply("Заполните информацию об удобном районе!",{ reply_markup: keyboard_place }),
+);
+
+const keyboard_place = new InlineKeyboard()
+    .text("Добавить моё хобби", "/place");
+
+bot.callbackQuery("/place", async (ctx) => {
+    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
+    await ctx.reply("Запомнил удобный для вас район!");
+});
 
 
 
