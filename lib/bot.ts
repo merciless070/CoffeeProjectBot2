@@ -86,7 +86,7 @@ const keyboard_time = new InlineKeyboard()
 
 bot.callbackQuery("/time", async (ctx) => {
     await ctx.reply("Введите удобное для вас время в формате: 1 сообщение: 16:00, 2 сообщение: 18:00.");
-    await sleep(4000);
+    await sleep(2000);
     await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
     await ctx.reply("Запомнил удобное для вас время!");
 });
