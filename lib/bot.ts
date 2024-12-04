@@ -52,7 +52,7 @@ bot.command(
 );
 
 const keyboard_place = new InlineKeyboard()
-    .text("Добавить моё хобби", "/place");
+    .text("Добавить удобный для меня район", "/place");
 
 bot.callbackQuery("/place", async (ctx) => {
     await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
