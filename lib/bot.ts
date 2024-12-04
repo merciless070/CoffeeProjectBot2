@@ -27,7 +27,7 @@ bot.callbackQuery("/about", async (ctx) => {
 bot.command(
     "profile",
     (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }),
-    (ctx) => ctx.reply({ reply_markup: keyboard_hobby }),
+    (ctx) => ctx.reply("Заполните информацию о вас2!",{ reply_markup: keyboard_hobby }),
 );
 
 // добавление топиков
