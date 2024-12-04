@@ -26,7 +26,7 @@ bot.callbackQuery("/about", async (ctx) => {
 
 bot.command(
     "profile",
-    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }, { reply_markup: keyboard_place }),
+    (ctx) => ctx.reply("Заполните информацию о вас!",{ reply_markup: keyboard_hobby }),
 );
 
 // добавление топиков
@@ -39,15 +39,7 @@ bot.callbackQuery("/hobby", async (ctx) => {
     await ctx.reply("Запомнил ваше хобби!");
 });
 
-// добавление района
 
-const keyboard_place = new InlineKeyboard()
-    .text("Добавить удобный район", "/place");
-
-bot.callbackQuery("/place", async (ctx) => {
-    await ctx.answerCallbackQuery(); // Уведомляем Telegram, что мы обработали запрос
-    await ctx.reply("Запомнил ваш район!");
-});
 
 
 // Обработайте другие сообщения.
