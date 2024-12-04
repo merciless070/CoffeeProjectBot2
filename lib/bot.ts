@@ -106,7 +106,6 @@ bot.on("message:text", async (ctx) => {
         ctx.reply("Я не знаю, как на это ответить. Пожалуйста, используйте команду /register для начала.");  
     }  
 })
-break
 
 // Запуск бота  
 await bot.start();
